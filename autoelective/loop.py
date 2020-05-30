@@ -384,7 +384,7 @@ def run_elective_loop():
                                     cout.info("%s hasn't reached the delay threshold %d, skip" % (c0, delay))
                                 else:
                                     tasks.append((ix, c0))
-                                    cout.info("%s is AVAILABLE now !" % c0)
+                                    cout.info("%s is AVAILABLE now !\a" % c0)
                             break
                     else:
                         raise UserInputException("%s is not in your course plan, please check your config." % c)

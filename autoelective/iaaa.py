@@ -15,6 +15,7 @@ _hooks_check_iaaa_success = get_hooks(
     check_iaaa_success,
 )
 
+_DUMMY_COOKIES = "JSESSIONID=TH9sd1HBgw0k3RTFxMHKmWpPp4bMJ5FnTGn7WmvyH2JmTqNGgxpS!1984960435"
 
 class IAAAClient(BaseClient):
 
@@ -36,6 +37,7 @@ class IAAAClient(BaseClient):
         headers["Referer"] = "%s?appID=syllabus&appName=%s&redirectUrl=%s" % (
             IAAAURL.OauthHomePage, quote("学生选课系统"), ElectiveURL.SSOLoginRedirect,
         )
+        headers["Cookie"] = _DUMMY_COOKIES  # 必须要指定一个 Cookie 否则报 101 status_code
         r = self._post(
             url=IAAAURL.OauthLogin,
             data={
